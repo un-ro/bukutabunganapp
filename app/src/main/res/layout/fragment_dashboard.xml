@@ -7,18 +7,24 @@
     android:orientation="vertical"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <TextView
-        android:id="@+id/title"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Rangkuman Bulan Ini"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/title_dashboard"
+            app:titleCentered="true"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
@@ -32,18 +38,20 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_income"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_list"
-        android:text="Tambah Pemasukan"/>
+        android:text="@string/add_income"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_outcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_setting"
-        android:text="Tambah Pemasukan"/>
+        android:text="@string/add_outcome"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_list"
@@ -51,7 +59,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Detail Cash Flow"/>
+        android:text="@string/title_history"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_setting"
@@ -59,5 +67,5 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Pengaturan"/>
+        android:text="@string/settings"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

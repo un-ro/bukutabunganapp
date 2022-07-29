@@ -4,4 +4,20 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+
+    <!--  Dashboard  -->
+    <string name="title_dashboard">Rangkuman Bulan Ini</string>
+    <string name="add_income">Tambah Pemasukan</string>
+    <string name="add_outcome">Tambah Pengeluaran</string>
+
+    <!--  History  -->
+    <string name="title_history">Detail Cash Flow</string>
+
+    <!--  Settings  -->
+    <string name="settings">Pengaturan</string>
+    <string name="aboutTitle">About this App</string>
+    <string name="aboutDescription">Aplikasi ini dibuat oleh:</string>
+    <string name="save">Simpan</string>
+    <string name="hint_password_new">Password Baru</string>
+    <string name="hint_password_old">Password Saat Ini</string>
 </resources>
