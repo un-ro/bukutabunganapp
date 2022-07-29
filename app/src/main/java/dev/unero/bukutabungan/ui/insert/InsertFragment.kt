@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -28,13 +29,18 @@ class InsertFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.toolbar.apply {
             setNavigationOnClickListener { findNavController().popBackStack() }
-            title = currentAction()
+            title = getCurrentTitle()
+            setTitleTextColor(getTitleColor())
         }
     }
 
-    private fun currentAction(): String =
+    private fun getCurrentTitle(): String =
         if (args.isIncome) getString(R.string.add_income)
         else getString(R.string.add_outcome)
+
+    private fun getTitleColor(): Int =
+        if (args.isIncome) ContextCompat.getColor(requireContext(), R.color.green)
+        else ContextCompat.getColor(requireContext(), R.color.red)
 
     override fun onDestroyView() {
         super.onDestroyView()
