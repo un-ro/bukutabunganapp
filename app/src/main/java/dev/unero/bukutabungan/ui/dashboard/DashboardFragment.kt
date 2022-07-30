@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import dev.unero.bukutabungan.databinding.FragmentDashboardBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding as FragmentDashboardBinding
+
+    private val viewModel: DashboardViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +27,18 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupButtonClick()
+
+        viewModel.getRecords().observe(viewLifecycleOwner) { data ->
+            if (data.isNotEmpty()) {
+                var incomeTotal = 0
+                var outcomeTotal = 0
+                data.filter { it.isIncome }.forEach { incomeTotal += it.amount }
+                data.filter { !it.isIncome }.forEach { outcomeTotal += it.amount}
+
+                binding.tvIncome.text = "Pemasukan: $incomeTotal"
+                binding.tvOutcome.text = "Pengeluaran: $outcomeTotal"
+            }
+        }
     }
 
     private fun setupButtonClick() {
