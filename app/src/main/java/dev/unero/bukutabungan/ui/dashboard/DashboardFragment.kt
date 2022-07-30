@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import dev.unero.bukutabungan.R
 import dev.unero.bukutabungan.databinding.FragmentDashboardBinding
+import dev.unero.bukutabungan.utils.UiHelper.convertCurrency
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : Fragment() {
@@ -35,8 +37,8 @@ class DashboardFragment : Fragment() {
                 data.filter { it.isIncome }.forEach { incomeTotal += it.amount }
                 data.filter { !it.isIncome }.forEach { outcomeTotal += it.amount}
 
-                binding.tvIncome.text = "Pemasukan: $incomeTotal"
-                binding.tvOutcome.text = "Pengeluaran: $outcomeTotal"
+                binding.tvIncome.text = getString(R.string.total_income, convertCurrency(incomeTotal))
+                binding.tvOutcome.text = getString(R.string.total_outcome, convertCurrency(outcomeTotal))
             }
         }
     }
@@ -47,6 +49,7 @@ class DashboardFragment : Fragment() {
             btnAddOutcome.setOnClickListener { findNavController().navigate(OUTCOME) }
             btnList.setOnClickListener { findNavController().navigate(HISTORY) }
             btnSetting.setOnClickListener { findNavController().navigate(SETTINGS) }
+            toolbar.setOnClickListener { findNavController().navigate(LOGOUT) }
         }
     }
 
@@ -60,5 +63,6 @@ class DashboardFragment : Fragment() {
         private val OUTCOME = DashboardFragmentDirections.toInsert(false)
         private val HISTORY = DashboardFragmentDirections.toHistory()
         private val SETTINGS = DashboardFragmentDirections.toSettings()
+        private val LOGOUT = DashboardFragmentDirections.logout()
     }
 }

@@ -7,6 +7,8 @@
 
     <!--  Dashboard  -->
     <string name="title_dashboard">Rangkuman Bulan Ini</string>
+    <string name="total_income">Pemasukan: %1$s</string>
+    <string name="total_outcome">Pengeluaran: %1$s</string>
     <string name="add_income">Tambah Pemasukan</string>
     <string name="add_outcome">Tambah Pengeluaran</string>
 

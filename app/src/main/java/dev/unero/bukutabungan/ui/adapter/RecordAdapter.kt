@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.unero.bukutabungan.R
 import dev.unero.bukutabungan.data.model.Record
 import dev.unero.bukutabungan.databinding.ItemRecordBinding
+import dev.unero.bukutabungan.utils.UiHelper
 
 class RecordAdapter: RecyclerView.Adapter<RecordViewHolder>() {
     private var data = listOf<Record>()
@@ -36,7 +37,9 @@ class RecordViewHolder(
 ): RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Record){
         binding.apply {
-            tvAmount.text = if (item.isIncome) "[ + ] ${item.amount}" else "[ - ] ${item.amount}"
+            tvAmount.text =
+                if (item.isIncome) "[ + ] ${UiHelper.convertCurrency(item.amount)}"
+                else "[ - ] ${UiHelper.convertCurrency(item.amount)}"
             tvDescription.text = item.description
             tvDate.text = item.date
 

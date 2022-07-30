@@ -13,6 +13,7 @@ import dev.unero.bukutabungan.ui.history.HistoryViewModel
 import dev.unero.bukutabungan.ui.insert.InsertViewModel
 import dev.unero.bukutabungan.ui.login.LoginViewModel
 import dev.unero.bukutabungan.ui.settings.SettingsViewModel
+import dev.unero.bukutabungan.utils.DB_NAME
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -24,7 +25,7 @@ val repositoryModule = module {
 
 val databaseModule = module {
     fun provideDB(application: Application): RecordDatabase =
-        Room.databaseBuilder(application, RecordDatabase::class.java, "RECORDB")
+        Room.databaseBuilder(application, RecordDatabase::class.java, DB_NAME)
             .fallbackToDestructiveMigration()
             .build()
 
