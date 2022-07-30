@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import dev.unero.bukutabungan.databinding.FragmentLoginBinding
 
-class Login : Fragment() {
+class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding as FragmentLoginBinding
@@ -24,7 +24,7 @@ class Login : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnLogin.setOnClickListener {
-            findNavController().navigate(LoginDirections.toDashboard())
+            findNavController().navigate(LoginFragmentDirections.toDashboard())
         }
     }
 

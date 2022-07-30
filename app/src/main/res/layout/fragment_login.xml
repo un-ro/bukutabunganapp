@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:weightSum="10"
     android:orientation="vertical"
-    tools:context=".ui.login.Login">
+    tools:context=".ui.login.LoginFragment">
 
     <TextView
         android:layout_width="match_parent"
