@@ -1,5 +1,6 @@
 package dev.unero.bukutabungan.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -9,11 +10,11 @@ import dev.unero.bukutabungan.data.model.Record
 @Dao
 interface RecordDao {
     @Query("SELECT * FROM record")
-    fun getAll(): List<Record>
+    fun getAll(): LiveData<List<Record>>
 
-    @Query("SELECT SUM(amount) FROM record WHERE type == :type")
-    fun sumType(type: String): Int
+    @Query("SELECT SUM(amount) FROM record WHERE isIncome == :isIncome")
+    fun sumType(isIncome: Boolean): Int
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(record: Record)
 }
