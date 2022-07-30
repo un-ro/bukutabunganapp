@@ -21,4 +21,10 @@
     <string name="hint_password_new">Password Baru</string>
     <string name="hint_password_old">Password Saat Ini</string>
     <string name="status">Status</string>
+    <string name="description">Keterangan</string>
+    <string name="amount">Nominal (Rp)</string>
+    <string name="date">Tanggal</string>
+
+    <!--  Info  -->
+    <string name="error_empty_field">Tidak boleh kosong</string>
 </resources>
