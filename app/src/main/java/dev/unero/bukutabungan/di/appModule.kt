@@ -1,6 +1,8 @@
 package dev.unero.bukutabungan.di
 
+import android.app.Application
 import androidx.room.Room
+import dev.unero.bukutabungan.data.local.RecordDao
 import dev.unero.bukutabungan.data.local.RecordDatabase
 import dev.unero.bukutabungan.data.repository.AccountRepositoryImpl
 import dev.unero.bukutabungan.data.repository.RecordRepositoryImpl
@@ -16,24 +18,26 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single<RecordRepository> { RecordRepositoryImpl() }
+    single<RecordRepository> { RecordRepositoryImpl(get()) }
     single<AccountRepository> { AccountRepositoryImpl() }
 }
 
 val databaseModule = module {
-    single {
-        Room.databaseBuilder(androidApplication(), RecordDatabase::class.java, "RECORD_DB")
+    fun provideDB(application: Application): RecordDatabase =
+        Room.databaseBuilder(application, RecordDatabase::class.java, "RECORDB")
             .fallbackToDestructiveMigration()
             .build()
-    }
 
-    single { get<RecordDatabase>().getDao() }
+    fun provideDao(database: RecordDatabase): RecordDao = database.getDao()
+
+    single { provideDB(androidApplication()) }
+    single { provideDao(get())}
 }
 
 val viewModelModule = module {
     viewModel { LoginViewModel() }
-    viewModel { DashboardViewModel() }
-    viewModel { HistoryViewModel() }
-    viewModel { InsertViewModel() }
+    viewModel { DashboardViewModel(get()) }
+    viewModel { HistoryViewModel(get()) }
+    viewModel { InsertViewModel(get()) }
     viewModel { SettingsViewModel() }
 }
