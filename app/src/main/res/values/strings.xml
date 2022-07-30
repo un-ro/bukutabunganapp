@@ -29,4 +29,5 @@
 
     <!--  Info  -->
     <string name="error_empty_field">Tidak boleh kosong</string>
+    <string name="error_wrong_credential">Username / Password salah</string>
 </resources>

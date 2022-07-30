@@ -20,7 +20,7 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     single<RecordRepository> { RecordRepositoryImpl(get()) }
-    single<AccountRepository> { AccountRepositoryImpl() }
+    single<AccountRepository> { AccountRepositoryImpl(get()) }
 }
 
 val databaseModule = module {
@@ -36,7 +36,7 @@ val databaseModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { LoginViewModel() }
+    viewModel { LoginViewModel(get()) }
     viewModel { DashboardViewModel(get()) }
     viewModel { HistoryViewModel(get()) }
     viewModel { InsertViewModel(get()) }
