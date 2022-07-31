@@ -17,6 +17,7 @@
 
     <!--  Settings  -->
     <string name="settings">Pengaturan</string>
+    <string name="password_success">Password berhasil diubah</string>
     <string name="aboutTitle">About this App</string>
     <string name="aboutDescription">Aplikasi ini dibuat oleh:</string>
     <string name="save">Simpan</string>
@@ -29,5 +30,8 @@
 
     <!--  Info  -->
     <string name="error_empty_field">Tidak boleh kosong</string>
+    <string name="error_password_old_not_same">Password lama tidak sama</string>
     <string name="error_wrong_credential">Username / Password salah</string>
+    <string name="error_password_field_empty">Input tidak boleh kosong</string>
+    <string name="error_password_same">Password tidak boleh sama dengan sebelumnya</string>
 </resources>

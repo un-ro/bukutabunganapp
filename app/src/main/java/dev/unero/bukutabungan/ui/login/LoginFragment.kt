@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import dev.unero.bukutabungan.R
 import dev.unero.bukutabungan.databinding.FragmentLoginBinding
 import dev.unero.bukutabungan.utils.UiHelper.showToast
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -20,9 +19,6 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding as FragmentLoginBinding
 
     private val viewModel: LoginViewModel by viewModel()
-
-    private val username by lazy { binding.etUsername.text.toString() }
-    private val password by lazy { binding.etPassword.text.toString() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +31,9 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnLogin.setOnClickListener {
-            lifecycleScope.launch(Dispatchers.IO) { viewModel.login(username, password) }
+            val username = binding.etUsername.text.toString()
+            val password = binding.etPassword.text.toString()
+            lifecycleScope.launch { viewModel.login(username, password) }
         }
 
         viewModel.isLoggedIn.observe(viewLifecycleOwner) {

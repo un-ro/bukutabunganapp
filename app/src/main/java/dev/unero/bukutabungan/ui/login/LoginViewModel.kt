@@ -1,12 +1,7 @@
 package dev.unero.bukutabungan.ui.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import dev.unero.bukutabungan.domain.repository.AccountRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
@@ -16,16 +11,17 @@ class LoginViewModel(
     val isLoggedIn: LiveData<Boolean> get() = _isLoggedIn
 
     fun login(username: String, password: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val realUsername = repository.getUsername()
-            val realPassword = repository.getPassword()
-            var isLogged = false
+        viewModelScope.launch {
+            val flowUsername = repository.getUsername()
+            val flowPassword = repository.getPassword()
 
-            realUsername.combine(realPassword) { realUs, realPs ->
-                isLogged = (realUs == username && realPs == password)
+            flowUsername.asLiveData().observeForever { realUsername ->
+                flowPassword.asLiveData().observeForever { realPassword ->
+                    _isLoggedIn.postValue(
+                        realUsername == username && realPassword == password
+                    )
+                }
             }
-
-            _isLoggedIn.postValue(isLogged)
         }
     }
 }

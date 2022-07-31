@@ -10,16 +10,18 @@ import dev.unero.bukutabungan.domain.repository.AccountRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-val Context.datastore: DataStore<Preferences> by preferencesDataStore("account")
 class AccountRepositoryImpl(
     private val context: Context
 ): AccountRepository {
+
+    private val Context.datastore: DataStore<Preferences> by preferencesDataStore("account")
+
     override suspend fun getUsername(): Flow<String> = context.datastore.data.map { prefs ->
-        prefs[PREF_USERNAME] ?: "user"
+        prefs[PREF_USERNAME] ?: DEFAULT
     }
 
     override suspend fun getPassword(): Flow<String> = context.datastore.data.map { prefs ->
-        prefs[PREF_PASSWORD] ?: "user"
+        prefs[PREF_PASSWORD] ?: DEFAULT
     }
 
     override suspend fun setPassword(newPassword: String) {
@@ -31,5 +33,6 @@ class AccountRepositoryImpl(
     companion object {
         private val PREF_USERNAME = stringPreferencesKey("USERNAME")
         private val PREF_PASSWORD = stringPreferencesKey("PASSWORD")
+        private const val DEFAULT = "user"
     }
 }

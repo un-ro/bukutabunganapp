@@ -40,5 +40,5 @@ val viewModelModule = module {
     viewModel { DashboardViewModel(get()) }
     viewModel { HistoryViewModel(get()) }
     viewModel { InsertViewModel(get()) }
-    viewModel { SettingsViewModel() }
+    viewModel { SettingsViewModel(get()) }
 }
