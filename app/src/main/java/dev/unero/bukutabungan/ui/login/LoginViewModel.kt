@@ -24,4 +24,10 @@ class LoginViewModel(
             }
         }
     }
+
+    fun setStatus(status: Boolean) {
+        viewModelScope.launch { repository.setLoginStatus(status) }
+    }
+
+    suspend fun getStatus(): LiveData<Boolean> = repository.getLoginStatus().asLiveData()
 }

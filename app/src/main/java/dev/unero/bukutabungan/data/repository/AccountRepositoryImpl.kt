@@ -3,6 +3,7 @@ package dev.unero.bukutabungan.data.repository
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -30,9 +31,20 @@ class AccountRepositoryImpl(
         }
     }
 
+    override suspend fun getLoginStatus(): Flow<Boolean> = context.datastore.data.map { prefs ->
+        prefs[PREF_STATUS] ?: false
+    }
+
+    override suspend fun setLoginStatus(status: Boolean) {
+        context.datastore.edit { account ->
+            account[PREF_STATUS] = status
+        }
+    }
+
     companion object {
         private val PREF_USERNAME = stringPreferencesKey("USERNAME")
         private val PREF_PASSWORD = stringPreferencesKey("PASSWORD")
+        private val PREF_STATUS = booleanPreferencesKey("STATUS")
         private const val DEFAULT = "user"
     }
 }

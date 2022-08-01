@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dev.unero.bukutabungan.R
 import dev.unero.bukutabungan.databinding.FragmentDashboardBinding
 import dev.unero.bukutabungan.utils.UiHelper.convertCurrency
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : Fragment() {
@@ -52,7 +54,10 @@ class DashboardFragment : Fragment() {
             btnAddOutcome.setOnClickListener { findNavController().navigate(OUTCOME) }
             btnList.setOnClickListener { findNavController().navigate(HISTORY) }
             btnSetting.setOnClickListener { findNavController().navigate(SETTINGS) }
-            toolbar.setOnClickListener { findNavController().navigate(LOGOUT) }
+            toolbar.setOnClickListener {
+                lifecycleScope.launch { viewModel.setStatus(false) }
+                findNavController().navigate(LOGOUT)
+            }
         }
     }
 
