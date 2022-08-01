@@ -39,6 +39,9 @@ class DashboardFragment : Fragment() {
 
                 binding.tvIncome.text = getString(R.string.total_income, convertCurrency(incomeTotal))
                 binding.tvOutcome.text = getString(R.string.total_outcome, convertCurrency(outcomeTotal))
+            } else {
+                binding.tvIncome.text = getString(R.string.total_income, convertCurrency(0))
+                binding.tvOutcome.text = getString(R.string.total_outcome, convertCurrency(0))
             }
         }
     }
