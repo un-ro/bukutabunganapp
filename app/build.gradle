@@ -57,6 +57,9 @@ dependencies {
     // Chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
+    // Lottie
+    implementation 'com.airbnb.android:lottie:5.2.0'
+
     // Koin
     implementation "io.insert-koin:koin-android:3.2.0"
 }
