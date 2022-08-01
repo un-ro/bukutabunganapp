@@ -35,6 +35,9 @@ class HistoryFragment : Fragment() {
             if (list.isNotEmpty()) {
                 adapter.setData(list)
                 binding.rvHistory.adapter = adapter
+                binding.layoutEmpty.root.visibility = View.GONE
+            } else {
+                binding.rvHistory.visibility = View.GONE
             }
         }
     }

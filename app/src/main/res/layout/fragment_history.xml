@@ -25,4 +25,9 @@
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_record" />
+
+    <include
+        android:id="@+id/layout_empty"
+        layout="@layout/layout_empty"/>
+
 </LinearLayout>

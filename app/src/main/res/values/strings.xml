@@ -34,4 +34,5 @@
     <string name="error_wrong_credential">Username / Password salah</string>
     <string name="error_password_field_empty">Input tidak boleh kosong</string>
     <string name="error_password_same">Password tidak boleh sama dengan sebelumnya</string>
+    <string name="empty_data">Belum ada Data</string>
 </resources>
