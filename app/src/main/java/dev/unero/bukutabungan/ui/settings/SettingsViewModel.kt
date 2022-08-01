@@ -22,8 +22,9 @@ class SettingsViewModel(
 
     var savedOldPassword = ""
 
-    fun getOldPassword(): String =
+    fun getOldPassword() {
         viewModelScope.launch {
             repository.getPassword().collect { savedOldPassword = it }
-        }.toString()
+        }
+    }
 }

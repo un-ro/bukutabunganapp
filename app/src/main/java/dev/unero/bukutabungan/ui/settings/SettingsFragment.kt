@@ -35,13 +35,13 @@ class SettingsFragment : Fragment() {
         binding.btnSave.setOnClickListener {
             val oldPassword = binding.etOldPassword.text.toString()
             val newPassword = binding.etNewPassword.text.toString()
-            val oldPass = viewModel.getOldPassword()
+            viewModel.getOldPassword()
 
             if (oldPassword.isEmpty() || newPassword.isEmpty())
                 showToast(requireContext(), getString(R.string.error_password_field_empty))
             else if (oldPassword == newPassword)
                 showToast(requireContext(), getString(R.string.error_password_same))
-            else if (oldPassword != oldPass)
+            else if (oldPassword != viewModel.savedOldPassword)
                 showToast(requireContext(), getString(R.string.error_password_old_not_same))
             else
                 lifecycleScope.launch { viewModel.changePassword(newPassword) }
