@@ -12,6 +12,11 @@
     <string name="add_income">Tambah Pemasukan</string>
     <string name="add_outcome">Tambah Pengeluaran</string>
 
+    <!-- Insert -->
+    <string name="description">Keterangan</string>
+    <string name="amount">Nominal (Rp)</string>
+    <string name="date">Tanggal</string>
+
     <!--  History  -->
     <string name="title_history">Detail Cash Flow</string>
 
@@ -25,15 +30,14 @@
         NIM: 1841720173\n
         Tanggal: 01 Agustus 2022
     </string>
-    <string name="save">Simpan</string>
     <string name="hint_password_new">Password Baru</string>
     <string name="hint_password_old">Password Saat Ini</string>
     <string name="status">Status</string>
-    <string name="description">Keterangan</string>
-    <string name="amount">Nominal (Rp)</string>
-    <string name="date">Tanggal</string>
+
 
     <!--  Info  -->
+    <string name="error_title_login">Gagal Login</string>
+    <string name="error_title_edit_password">Gagal mengubah Password</string>
     <string name="error_empty_field">Tidak boleh kosong</string>
     <string name="error_password_old_not_same">Password lama tidak sama</string>
     <string name="error_wrong_credential">Username / Password salah</string>
@@ -41,4 +45,7 @@
     <string name="error_password_same">Password tidak boleh sama dengan sebelumnya</string>
     <string name="empty_data">Belum ada Data</string>
     <string name="profile_photo">Foto Developer</string>
+    <string name="save">Simpan</string>
+    <string name="info_gambar">Gambar Line Chart</string>
+
 </resources>

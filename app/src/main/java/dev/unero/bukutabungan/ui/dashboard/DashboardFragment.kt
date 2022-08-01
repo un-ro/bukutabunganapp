@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.github.mikephil.charting.components.LimitLine
 import dev.unero.bukutabungan.R
 import dev.unero.bukutabungan.databinding.FragmentDashboardBinding
 import dev.unero.bukutabungan.utils.UiHelper.convertCurrency
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : Fragment() {
@@ -36,8 +35,11 @@ class DashboardFragment : Fragment() {
             if (data.isNotEmpty()) {
                 var incomeTotal = 0
                 var outcomeTotal = 0
-                data.filter { it.isIncome }.forEach { incomeTotal += it.amount }
-                data.filter { !it.isIncome }.forEach { outcomeTotal += it.amount}
+
+                data.forEach {
+                    if (it.isIncome) incomeTotal += it.amount
+                    else outcomeTotal += it.amount
+                }
 
                 binding.tvIncome.text = getString(R.string.total_income, convertCurrency(incomeTotal))
                 binding.tvOutcome.text = getString(R.string.total_outcome, convertCurrency(outcomeTotal))
@@ -54,10 +56,6 @@ class DashboardFragment : Fragment() {
             btnAddOutcome.setOnClickListener { findNavController().navigate(OUTCOME) }
             btnList.setOnClickListener { findNavController().navigate(HISTORY) }
             btnSetting.setOnClickListener { findNavController().navigate(SETTINGS) }
-            toolbar.setOnClickListener {
-                lifecycleScope.launch { viewModel.setStatus(false) }
-                findNavController().navigate(LOGOUT)
-            }
         }
     }
 
@@ -71,6 +69,5 @@ class DashboardFragment : Fragment() {
         private val OUTCOME = DashboardFragmentDirections.toInsert(false)
         private val HISTORY = DashboardFragmentDirections.toHistory()
         private val SETTINGS = DashboardFragmentDirections.toSettings()
-        private val LOGOUT = DashboardFragmentDirections.logout()
     }
 }

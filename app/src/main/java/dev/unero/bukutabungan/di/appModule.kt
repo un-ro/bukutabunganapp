@@ -37,7 +37,7 @@ val databaseModule = module {
 
 val viewModelModule = module {
     viewModel { LoginViewModel(get()) }
-    viewModel { DashboardViewModel(get(), get()) }
+    viewModel { DashboardViewModel(get()) }
     viewModel { HistoryViewModel(get()) }
     viewModel { InsertViewModel(get()) }
     viewModel { SettingsViewModel(get()) }

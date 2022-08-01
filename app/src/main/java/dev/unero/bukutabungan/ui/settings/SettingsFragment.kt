@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dev.unero.bukutabungan.R
 import dev.unero.bukutabungan.databinding.FragmentSettingsBinding
+import dev.unero.bukutabungan.utils.UiHelper.createAlert
 import dev.unero.bukutabungan.utils.UiHelper.showToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,11 +39,14 @@ class SettingsFragment : Fragment() {
             viewModel.getOldPassword()
 
             if (oldPassword.isEmpty() || newPassword.isEmpty())
-                showToast(requireContext(), getString(R.string.error_password_field_empty))
+                createAlert(requireContext(), getString(R.string.error_password_field_empty))
+                    .setNeutralButton("OK") { dialog, _ -> dialog.dismiss() }.show()
             else if (oldPassword == newPassword)
-                showToast(requireContext(), getString(R.string.error_password_same))
+                createAlert(requireContext(), getString(R.string.error_password_same))
+                    .setNeutralButton("OK") { dialog, _ -> dialog.dismiss() }.show()
             else if (oldPassword != viewModel.savedOldPassword)
-                showToast(requireContext(), getString(R.string.error_password_old_not_same))
+                createAlert(requireContext(), getString(R.string.error_password_old_not_same))
+                    .setNeutralButton("OK") { dialog, _ -> dialog.dismiss() }.show()
             else
                 lifecycleScope.launch { viewModel.changePassword(newPassword) }
 

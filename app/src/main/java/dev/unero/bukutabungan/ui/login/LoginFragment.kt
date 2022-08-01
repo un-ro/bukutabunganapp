@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.unero.bukutabungan.R
 import dev.unero.bukutabungan.databinding.FragmentLoginBinding
-import dev.unero.bukutabungan.utils.UiHelper.showToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,12 +31,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch {
-            viewModel.getStatus().observe(viewLifecycleOwner) {
-                if (it) findNavController().navigate(LoginFragmentDirections.toDashboard())
-            }
-        }
-
         binding.btnLogin.setOnClickListener {
             val username = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
@@ -44,11 +38,14 @@ class LoginFragment : Fragment() {
         }
 
         viewModel.isLoggedIn.observe(viewLifecycleOwner) {
-            viewModel.setStatus(it)
             if (it) findNavController().navigate(LoginFragmentDirections.toDashboard())
             else {
                 clearInput()
-                showToast(requireContext(), getString(R.string.error_wrong_credential))
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(getString(R.string.error_title_login))
+                    .setMessage(getString(R.string.error_wrong_credential))
+                    .setNeutralButton("OK") { dialog, _ -> dialog.dismiss() }
+                    .show()
             }
         }
     }

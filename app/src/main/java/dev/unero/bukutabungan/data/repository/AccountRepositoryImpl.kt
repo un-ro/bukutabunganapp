@@ -31,20 +31,9 @@ class AccountRepositoryImpl(
         }
     }
 
-    override suspend fun getLoginStatus(): Flow<Boolean> = context.datastore.data.map { prefs ->
-        prefs[PREF_STATUS] ?: false
-    }
-
-    override suspend fun setLoginStatus(status: Boolean) {
-        context.datastore.edit { account ->
-            account[PREF_STATUS] = status
-        }
-    }
-
     companion object {
         private val PREF_USERNAME = stringPreferencesKey("USERNAME")
         private val PREF_PASSWORD = stringPreferencesKey("PASSWORD")
-        private val PREF_STATUS = booleanPreferencesKey("STATUS")
         private const val DEFAULT = "user"
     }
 }

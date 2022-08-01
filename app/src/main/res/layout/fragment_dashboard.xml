@@ -17,35 +17,50 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_logout"
             app:title="@string/title_dashboard"
             app:titleCentered="true"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_overview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/appbar"
-        android:orientation="horizontal">
+        android:orientation="vertical">
         <TextView
             android:id="@+id/tv_income"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textColor="@color/green"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             tools:text="Pemasukan: Rp. 0" />
 
         <TextView
             android:id="@+id/tv_outcome"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textColor="@color/red"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             tools:text="Pengeluaran: Rp. 0" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/graph"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/info_gambar"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@id/layout_overview"
+        app:layout_constraintBottom_toTopOf="@id/btn_add_income"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_income"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
         android:drawableTop="@drawable/income"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_list"
@@ -56,7 +71,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_outcome"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
         android:drawableTop="@drawable/outcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_setting"
@@ -67,7 +83,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_list"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginBottom="16dp"
         android:drawableTop="@drawable/list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,7 +95,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_setting"
         android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginBottom="16dp"
         android:drawableTop="@drawable/setting"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

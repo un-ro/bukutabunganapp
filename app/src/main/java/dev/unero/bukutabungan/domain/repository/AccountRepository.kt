@@ -6,7 +6,4 @@ interface AccountRepository {
     suspend fun getUsername(): Flow<String>
     suspend fun getPassword(): Flow<String>
     suspend fun setPassword(newPassword: String)
-
-    suspend fun getLoginStatus(): Flow<Boolean>
-    suspend fun setLoginStatus(status: Boolean)
 }
