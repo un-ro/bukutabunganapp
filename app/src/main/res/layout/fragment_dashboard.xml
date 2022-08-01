@@ -44,33 +44,45 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_income"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:drawableTop="@drawable/income"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_list"
-        android:text="@string/add_income"/>
+        android:text="@string/add_income"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        app:cornerRadius="8dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_outcome"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:drawableTop="@drawable/outcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btn_setting"
-        android:text="@string/add_outcome"/>
+        android:text="@string/add_outcome"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        app:cornerRadius="8dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_list"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:drawableTop="@drawable/list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/title_history"/>
+        android:text="@string/title_history"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        app:cornerRadius="8dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_setting"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:drawableTop="@drawable/setting"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/settings"/>
+        android:text="@string/settings"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        app:cornerRadius="8dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
