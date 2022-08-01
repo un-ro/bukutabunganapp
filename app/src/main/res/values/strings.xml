@@ -19,7 +19,12 @@
     <string name="settings">Pengaturan</string>
     <string name="password_success">Password berhasil diubah</string>
     <string name="aboutTitle">About this App</string>
-    <string name="aboutDescription">Aplikasi ini dibuat oleh:</string>
+    <string name="aboutDescription">
+        Aplikasi ini dibuat oleh:\n
+        Nama: Unero Bhagaskara R.M.\n
+        NIM: 1841720173\n
+        Tanggal: 01 Agustus 2022
+    </string>
     <string name="save">Simpan</string>
     <string name="hint_password_new">Password Baru</string>
     <string name="hint_password_old">Password Saat Ini</string>
@@ -35,4 +40,5 @@
     <string name="error_password_field_empty">Input tidak boleh kosong</string>
     <string name="error_password_same">Password tidak boleh sama dengan sebelumnya</string>
     <string name="empty_data">Belum ada Data</string>
+    <string name="profile_photo">Foto Developer</string>
 </resources>
